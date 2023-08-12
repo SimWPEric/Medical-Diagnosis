@@ -20,6 +20,8 @@ type FormData = {
 }
 
 export function Result( {
+    age,
+    gender,
     as,
     mv_dz,
     op_risk,
@@ -42,8 +44,8 @@ export function Result( {
                 const jsonData = await response.json();
                 for (let x of jsonData) {
                     if (
-                        x["\ufeffAge"] === "<70" &&
-                        x.Gender === "Female" &&
+                        x["\ufeffAge"] === age &&
+                        x.Gender === gender &&
                         x["AS "] === as &&
                         x["MV Dz"] === mv_dz &&
                         x["Op Risk Scores (e.g. STS, ESII)"] === op_risk &&
