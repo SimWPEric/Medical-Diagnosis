@@ -76,6 +76,7 @@ export function Questions() {
     const {
         steps,
         currentStepIndex,
+        setCurrentStepIndex,
         step,
         isFirstStep,
         isLastStep,
@@ -123,6 +124,27 @@ export function Questions() {
         }, 2000)
     }
 
+    const handleRestart = () => {
+        setCurrentStepIndex(0);
+        updateFields({
+            age: "",
+            gender: "",
+            as: "",
+            mv_dz: "",
+            op_risk: "",
+            cad: "",
+            symptoms: "",
+            lvef: "",
+            egfr: "",
+            hemoglobin: "",
+            cirhosis: "",
+            cognition: "",
+            frailty: "",
+            handgrip: "",
+            ambulation: ""
+        })
+    }
+
     return (
         <div>
             <Card className="w-[350px]">
@@ -134,7 +156,7 @@ export function Questions() {
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     {!isFirstStep ? <Button variant="outline" onClick={back}>Back</Button> : <div></div>}
-                    {isLastStep ? <div></div>
+                    {isLastStep ? <Button onClick={handleRestart}>Restart</Button>
                                 : isSecondLastStep
                                 ? <Button onClick={handleSubmit}>Diagnosis</Button>
                                 : <Button onClick={next}>Next</Button> }
